@@ -1,0 +1,38 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+verifier:
+  name: inspec
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: debian-7.9
+    driver_config:
+      image: debian:jessie-slim
+      platform: debian
+      publish_all: false
+      privileged: false
+      provision_command: apt-get update
+
+suites:
+  - name: d-ber1-testkitchen-001
+    driver:
+      hostname: d-ber1-testkitchen-001
+    run_list:
+      - recipe[cookbook_attributes_per_host::default]
+
+  - name: d-ber1-testkitchen-002
+    driver:
+      hostname: d-ber1-testkitchen-002
+    run_list:
+      - recipe[cookbook_attributes_per_host::default]
+
+  - name: d-ber1-testkitchen-003
+    driver:
+      hostname: d-ber1-testkitchen-003
+    run_list:
+      - recipe[cookbook_attributes_per_host::default]

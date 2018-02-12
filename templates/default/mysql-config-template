@@ -1,0 +1,7 @@
+
+hello
+
+  config001: <%= @config001 %> (default)
+  config002: <%= @config002 %> (default)
+  config003: <%= @config003 %> (INDIVIDUAL)
+  config004: <%= @config004 %> (INDIVIDUAL)

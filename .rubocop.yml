@@ -1,0 +1,9 @@
+Metrics/LineLength:
+  Max: 300
+Metrics/BlockLength:
+  Enabled: false
+Documentation:
+  Enabled: false
+AllCops:
+  Excludes:
+    - cookbooks/**/*
