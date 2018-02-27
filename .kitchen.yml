@@ -8,6 +8,9 @@ verifier:
 
 provisioner:
   name: chef_zero
+  client_rb:
+    treat_deprecation_warnings_as_errors: true
+    resource_cloning: false
 
 platforms:
   - name: debian-7.9
@@ -17,6 +20,7 @@ platforms:
       publish_all: false
       privileged: false
       provision_command: apt-get update
+
 
 suites:
   - name: d-ber1-testkitchen-001
