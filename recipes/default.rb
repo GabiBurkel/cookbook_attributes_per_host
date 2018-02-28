@@ -12,3 +12,8 @@ template '/tmp/mysql-config' do
             config003: node['default003'],
             config004: node['default004'])
 end
+
+
+unless Chef::Config['file_cache_path'].include?('kitchen')
+  puts("We are not running in testkitchen")
+end
