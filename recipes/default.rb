@@ -13,7 +13,6 @@ template '/tmp/mysql-config' do
             config004: node['default004'])
 end
 
-
 unless Chef::Config['file_cache_path'].include?('kitchen')
-  puts("We are not running in testkitchen")
+  puts('We are not running in testkitchen')
 end

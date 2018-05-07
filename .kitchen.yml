@@ -2,6 +2,7 @@
 driver:
   name: docker
   use_sudo: false
+  require_chef_omnibus: 12.21.26
 
 verifier:
   name: inspec
@@ -13,9 +14,9 @@ provisioner:
     resource_cloning: false
 
 platforms:
-  - name: debian-7.9
+  - name: debian-9
     driver_config:
-      image: debian:jessie-slim
+      image: debian:stretch-slim
       platform: debian
       publish_all: false
       privileged: false
