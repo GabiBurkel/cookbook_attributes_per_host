@@ -1,5 +1,4 @@
 #!/usr/bin/groovy
-# taken from https://github.com/adhoclabs/jenkins-pipeline-semver/blob/master/src/org/adhoclabs/SemVer.groovy
 
 package org.adhoclabs;
 
