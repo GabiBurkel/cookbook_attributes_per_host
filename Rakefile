@@ -21,6 +21,45 @@ namespace :style do
     task.options = ['--fail-level', 'E']
   end
 end
+
+namespace :jenkins do
+  desc 'Bump the repository patch version'
+  task :bump_patch_version do
+    Rake::Task[:test].invoke
+    version_curr = `git tag --list '[0-9].[0-9].[0-9]*' | tail -n 1`
+    array = version_curr.split(/[\.\-]/)
+    array.each_with_index { |e, i| array[i] = Integer(e) if /\A\d+\z/.match(e) }
+    version_new = array[0].to_s + '.' + array[1].to_s + '.' + (array[2].to_i + 1).to_s
+    print "Tagging this version with new patch version: " + version_new
+    `git tag #{version_new}`
+    `git push --tags`
+  end
+
+  desc 'Bump the repository minor version'
+  task :bump_minor_version do
+    Rake::Task[:test].invoke
+    version_curr = `git tag --list '[0-9].[0-9].[0-9]*' | tail -n 1`
+    array = version_curr.split(/[\.\-]/)
+    array.each_with_index { |e, i| array[i] = Integer(e) if /\A\d+\z/.match(e) }
+    version_new = array[0].to_s + '.' + (array[1].to_i + 1).to_s + '.' + array[2].to_s
+    print "Tagging this version with new minor version: " + version_new
+    `git tag #{version_new}`
+    `git push --tags`
+  end
+
+  desc 'Bump the repository major version'
+  task :bump_major_version do
+    Rake::Task[:test].invoke
+    version_curr = `git tag --list '[0-9].[0-9].[0-9]*' | tail -n 1`
+    array = version_curr.split(/[\.\-]/)
+    array.each_with_index { |e, i| array[i] = Integer(e) if /\A\d+\z/.match(e) }
+    version_new = (array[0].to_i + 1).to_s + '.' + array[1].to_s + '.' + array[2].to_s
+    print "Tagging this version with new major version: " + version_new
+    `git tag #{version_new}`
+    `git push --tags`
+  end
+end
+
 # Alias
 task style: ['style:foodcritic', 'style:rubocop']
 
