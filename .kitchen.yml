@@ -9,9 +9,15 @@ verifier:
 
 provisioner:
   name: chef_zero
+  data_path: 'test/integration'
+  data_bags_path: 'test/integration/data_bags/'
+  environments_path: 'test/integration/environments'
+  cookbooks_path: '../'
+#  encrypted_data_bag_secret_key_path: 'test/integration/data_bags/test_key'
   client_rb:
     treat_deprecation_warnings_as_errors: true
     resource_cloning: false
+    environment: staging
 
 platforms:
   - name: debian-9
